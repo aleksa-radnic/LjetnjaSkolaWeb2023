@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+p {
+    color: blue;
+}
+
+.first-paragraph {
+    background: red;
+    color: blue;
+}
+
+#last-paragraph {
+    background: yellow;
+    color: red;
+}
+
+.btn-style {
+    padding: 8px 16px;
+    background-color: greenyellow;
+    border: 1px dashed green;
+}
+
+.btn-style:hover {
+    background-color: green;
+    border: 1px solid greenyellow;
+}
