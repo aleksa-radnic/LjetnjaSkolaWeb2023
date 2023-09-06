@@ -18,5 +18,3 @@ let delbtns = document.getElementsByClassName("del-btn");
 for (btn of delbtns){
     btn.addEventListener("click", removeItem);
 }
-
-document.get
