@@ -1,25 +1,43 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { useContext } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 export const AppLayout = () => {
-  const handleLinkClassName = ({ isActive }) => (isActive ? "active" : "");
+  const { user, handleUserLogout } = useContext(UserContext);
+  const handleLinkClassName = ({ isActive }) =>
+    isActive ? 'text-green-500' : '';
+
   return (
     <>
       <nav>
         <NavLink to="/" className={handleLinkClassName}>
           Home
-        </NavLink>{" "}
-        |{" "}
-        <NavLink to="/about" className={handleLinkClassName}>
+        </NavLink>
+        |
+        <NavLink to="/about" className={handleLinkClassName} end>
           About
-        </NavLink>{" "}
-        |{" "}
+        </NavLink>
+        |
         <NavLink to="/about/team" className={handleLinkClassName}>
           Team
-        </NavLink>{" "}
-        |{" "}
+        </NavLink>
+        |
         <NavLink to="/users" className={handleLinkClassName}>
           Users
         </NavLink>
+        |
+        {user?.userId ? (
+          <button
+            className="px-2 py-1 bg-green-500 rounded-sm text-white ml-4"
+            onClick={handleUserLogout}
+          >
+            Logout
+          </button>
+        ) : (
+          <NavLink to="/login" className={handleLinkClassName}>
+            Login
+          </NavLink>
+        )}
       </nav>
       <Outlet />
     </>
